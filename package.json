@@ -1,0 +1,16 @@
+{
+  "author": "Falco Nogatz <fnogatz@gmail.com>",
+  "name": "geospatial-demo",
+  "description": "Example location-based app to demonstrate the power of MongoDB, node.js and Websockets",
+  "private": true,
+  "version": "0.0.1",
+  "dependencies": {
+    "jsontool": "5.1.x",
+    "express": "3.0.x",
+    "socket.io": "0.9.x",
+    "mongodb": "1.2.x"
+  },
+  "scripts": {
+    "postinstall": "JSON=./node_modules/jsontool/lib/jsontool.js; curl http://daten.ulmapi.de/haltestellen/_all_docs?include_docs=true | $JSON rows | $JSON -a doc | $JSON -g -j | mongoimport --db geospatial-demo --collection haltestellen --drop --jsonArray; mongo localhost/geospatial-demo --eval \"db.haltestellen.ensureIndex({ 'geometry.features.geometry.coordinates': '2d' })\""
+  }
+}
