@@ -11,6 +11,6 @@
     "mongodb": "1.2.x"
   },
   "scripts": {
-    "postinstall": "JSON=./node_modules/jsontool/lib/jsontool.js; curl http://daten.ulmapi.de/haltestellen/_all_docs?include_docs=true | $JSON rows | $JSON -a doc | $JSON -g -j | mongoimport --db geospatial-demo --collection haltestellen --drop --jsonArray; mongo localhost/geospatial-demo --eval \"db.haltestellen.ensureIndex({ 'geometry.features.geometry.coordinates': '2d' })\""
+    "postinstall": "mongoimport --db geospatial-demo --collection haltestellen --drop --jsonArray < data.json; mongo localhost/geospatial-demo --eval \"db.haltestellen.ensureIndex({ 'geometry.features.geometry.coordinates': '2d' })\""
   }
 }
