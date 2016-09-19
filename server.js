@@ -3,9 +3,12 @@ var io = require('socket.io');
 var mongodb = require('mongodb');
 
 var app = express();
-var server = require('http').createServer(app);
-io = io.listen(server);
+var server = require('http').Server(app);
+io = io(server);
 
+server.listen(3000, function() {
+  console.log('Listening on port 3000');
+});
 
 app.use(express.static(__dirname + '/static'));
 app.use(express.bodyParser());
@@ -19,7 +22,11 @@ app.post('/checkin-simple.html', function(req, res) {
 
 
 mongodb.MongoClient.connect("mongodb://localhost:27017/geospatial-demo", function(err, db) {
-  io.sockets.on('connection', function(socket) {
+  if (err) {
+    throw err
+  }
+
+  io.on('connection', function(socket) {
     socket.on('coordinates', function(coords) {
       db.collection('haltestellen').find({
         "geometry.features.geometry.coordinates": {
@@ -59,9 +66,4 @@ mongodb.MongoClient.connect("mongodb://localhost:27017/geospatial-demo", functio
       });
     });
   });
-});
-
-
-server.listen(3000, function() {
-  console.log('Listening on port 3000');
 });

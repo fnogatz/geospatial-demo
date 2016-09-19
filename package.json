@@ -5,10 +5,9 @@
   "private": true,
   "version": "0.0.1",
   "dependencies": {
-    "jsontool": "5.1.x",
     "express": "3.0.x",
-    "socket.io": "0.9.x",
-    "mongodb": "1.2.x"
+    "mongodb": "1.2.x",
+    "socket.io": "^1.4.8"
   },
   "scripts": {
     "postinstall": "mongoimport --db geospatial-demo --collection haltestellen --drop --jsonArray < data.json; mongo localhost/geospatial-demo --eval \"db.haltestellen.ensureIndex({ 'geometry.features.geometry.coordinates': '2d' })\""

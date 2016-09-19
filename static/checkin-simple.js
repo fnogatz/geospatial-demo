@@ -14,7 +14,7 @@ function setCurrentPosition(coords) {
 
   var marker = L.marker([coords.latitude, coords.longitude]).addTo(map).bindPopup(msg).openPopup();
 
-  map.setView([coords.latitude, coords.longitude], 13);
+  map.setView([coords.latitude, coords.longitude], 10);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
