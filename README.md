@@ -9,7 +9,7 @@ It provides three basic services/pages:
 * Show the current checkin-ins live
 * Check-in to a location nearby the user's position
 
-As example locations the user can check-in, this demo application uses the bus stops of the city of Ulm, provided by [UlmApi](http://ulmapi.de) under [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/). The first two services can be used without these data, but make sure to  zoom to your current location in the map, as Ulm, Germany will be preselected.
+As example locations the user can check-in, this demo application uses the bus stops of the city of Ulm, provided by [UlmApi](http://ulmapi.de) under [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/). The first two services can be used without these data, but make sure to zoom to your current location in the map, as Ulm, Germany will be preselected.
 You might check-in to Ulm's locations from anywhere else - MongoDB's geospatial index will find the nearest bus stop at Ulm even if it's miles away.
 
 ## Technologies
@@ -28,9 +28,9 @@ You can install the demo server via:
 
 	npm install
 
-This will download not only the package's dependencies but also the UlmApi example data from [daten.ulmapi.de](http://daten.ulmapi.de/_utils/database.html?haltestellen) and imports it into a fresh MongoDB collection called `haltestellen` (german for bus stops) inside the `geospatial-demo` database. A geospatial index for the `geometry.features.geometry.coordinates` field is automatically created.
+This will import the [UlmApi](http://ulmapi.de) example data into a fresh MongoDB collection called `haltestellen` (german for bus stops) inside the `geospatial-demo` database. A geospatial index for the `geometry.features.geometry.coordinates` field is automatically created.
 
-Simple start the server via:
+Simply start the server via:
 
 	npm start
 
