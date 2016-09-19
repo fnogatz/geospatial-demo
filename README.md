@@ -1,6 +1,9 @@
 # Geospatial Demo App
 
-This is an example implementation of a location-based service to demonstrate the power of MongoDB, node.js and Websockets.
+An example implementation of a location-based service to demonstrate the power of MongoDB, node.js and Websockets.
+
+![Screenshot](screenshot.png)
+
 It provides three basic services/pages: 
 * Check-in from the user's actual position (determined via the HTML5 Geolocation API)
 * Show the current checkin-ins live
