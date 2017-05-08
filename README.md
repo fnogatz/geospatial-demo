@@ -1,5 +1,7 @@
 # Geospatial Demo App
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/fnogatz/geospatial-demo.svg)](https://greenkeeper.io/)
+
 An example implementation of a location-based service to demonstrate the power of MongoDB, node.js and Websockets.
 
 ![Screenshot](screenshot.png)
